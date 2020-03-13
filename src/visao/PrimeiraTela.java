@@ -26,6 +26,7 @@ public class PrimeiraTela extends JFrame implements ObservadorTela1 {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setVisible(true);
+		setResizable(false);
 		pack();
 	}
 
