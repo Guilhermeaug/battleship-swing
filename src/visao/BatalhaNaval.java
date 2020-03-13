@@ -9,8 +9,8 @@ import modelo.Tabuleiro;
 
 @SuppressWarnings("serial")
 public class BatalhaNaval extends JFrame {
-	public BatalhaNaval() {
-		Tabuleiro tabuleiro = new Tabuleiro(100);
+	public BatalhaNaval(int misseis) {
+		Tabuleiro tabuleiro = new Tabuleiro(misseis);
 
 		Cena cena = new Cena(tabuleiro);
 		cena.setPreferredSize(new Dimension(100, 100));
@@ -30,7 +30,7 @@ public class BatalhaNaval extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		new BatalhaNaval();
+		new BatalhaNaval(0);
 		
 	}
 }

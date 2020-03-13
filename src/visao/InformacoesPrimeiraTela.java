@@ -1,0 +1,125 @@
+package visao;
+
+import java.awt.BorderLayout;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.SwingConstants;
+
+@SuppressWarnings("serial")
+public class InformacoesPrimeiraTela extends JPanel implements MouseListener {
+
+	JLabel dificuldadeDoJogo = new JLabel();
+
+	// https://www.javaprogressivo.net/2014/04/Tutorial-JCheckBox-Java-Como-Usar-Botoes-Checagem-CheckBox.html
+	ButtonGroup botoes = new ButtonGroup();
+	JRadioButton facil;
+	JRadioButton medio;
+	JRadioButton dificil;
+
+	JButton botaoIniciar = new JButton();
+
+	// Observadores
+	// https://pt.stackoverflow.com/questions/236123/o-que-%C3%A9-e-como-implementar-um-listener-em-java
+	private final List<ObservadorTela1> observadores = new ArrayList<>();
+
+		private void notificarObservadores() {
+			for (ObservadorTela1 observador : observadores) {
+				observador.notificar(this);
+			}
+		}
+
+	public void adicionarObservador(ObservadorTela1 obs) {
+		observadores.add(obs);
+	}
+
+	// Fim Observadores
+
+	public InformacoesPrimeiraTela() {
+		setLayout(new BorderLayout(10, 10));
+
+		JPanel titulo = new JPanel();
+		titulo.setLayout(new BorderLayout());
+		titulo.add(dificuldadeDoJogo, BorderLayout.NORTH);
+
+		JPanel opcoes = new JPanel();
+		facil = new JRadioButton("Fácil", false);
+		medio = new JRadioButton("Médio", false);
+		dificil = new JRadioButton("Difícil", false);
+		botoes.add(facil);
+		botoes.add(medio);
+		botoes.add(dificil);
+		opcoes.add(facil);
+		opcoes.add(medio);
+		opcoes.add(dificil);
+
+		dificuldadeDoJogo.setText("Dificuldade do jogo:	");
+		dificuldadeDoJogo.setHorizontalAlignment(SwingConstants.CENTER);
+		botaoIniciar.setText("Iniciar jogo");
+		botaoIniciar.addMouseListener(this);
+
+		RadioButtonHandler tratador = new RadioButtonHandler();
+		facil.addItemListener(tratador);
+		medio.addItemListener(tratador);
+		dificil.addItemListener(tratador);
+
+		add(titulo, BorderLayout.NORTH);
+		add(opcoes, BorderLayout.CENTER);
+		add(botaoIniciar, BorderLayout.SOUTH);
+
+	}
+
+	private class RadioButtonHandler implements ItemListener {
+
+		@Override
+		public void itemStateChanged(ItemEvent event) {
+			if (facil.isSelected()) {
+
+			}
+			if (medio.isSelected()) {
+
+			}
+			if (dificil.isSelected()) {
+
+			}
+
+		}
+
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		if (facil.isSelected()) {
+			new BatalhaNaval(80);
+			notificarObservadores();
+		}else if(medio.isSelected()) {
+			new BatalhaNaval(50);
+			notificarObservadores();
+		}else if(dificil.isSelected()) {
+			new BatalhaNaval(25);
+			notificarObservadores();
+		}
+	}
+
+	public void mouseClicked(MouseEvent e) {
+	}
+
+	public void mouseReleased(MouseEvent e) {
+	}
+
+	public void mouseEntered(MouseEvent e) {
+	}
+
+	public void mouseExited(MouseEvent e) {
+	}
+
+}
