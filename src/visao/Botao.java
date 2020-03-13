@@ -18,7 +18,7 @@ public class Botao extends JButton implements MouseListener {
 
 		setBackground(new Color(127, 255, 212));
 
-		if (campo.isContemNavio()) {
+		if (campo.getContemNavio() != 0) {
 			setBackground(new Color(100, 0, 0));
 		}
 
@@ -34,6 +34,7 @@ public class Botao extends JButton implements MouseListener {
 			} else if (resultado == 0) {
 				setBackground(new Color(0, 0, 100));
 			}
+			
 		}
 	}
 

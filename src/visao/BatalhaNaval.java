@@ -5,13 +5,15 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
+import modelo.ObservadorTabuleiroResultado;
 import modelo.Tabuleiro;
 
 @SuppressWarnings("serial")
-public class BatalhaNaval extends JFrame {
+public class BatalhaNaval extends JFrame implements ObservadorTabuleiroResultado {
 	public BatalhaNaval(int misseis) {
 		Tabuleiro tabuleiro = new Tabuleiro(misseis);
-
+		tabuleiro.adicionarObservador(this);
+		
 		Cena cena = new Cena(tabuleiro);
 		cena.setPreferredSize(new Dimension(100, 100));
 		add(cena, BorderLayout.CENTER);
@@ -29,8 +31,17 @@ public class BatalhaNaval extends JFrame {
 		
 	}
 
-	public static void main(String[] args) {
-		new BatalhaNaval(0);
+	@Override
+	public void notificar(Tabuleiro tabuleiro, boolean resultado) {
+		//O jogador ganhou ou perdeu. Fim da história.
+		dispose();
+		System.out.println("Cheguei aqui!");
 		
+		if(resultado) {
+			new TerceiraTela(true);
+		} else {
+			new TerceiraTela(false);
+		}
 	}
+
 }

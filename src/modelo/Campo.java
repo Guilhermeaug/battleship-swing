@@ -6,7 +6,7 @@ import java.util.List;
 public class Campo {
 
 	private boolean aberto = false;
-	private boolean contemNavio = false;
+	private int contemNavio = 0;
 
 	// Observadores
 	// https://pt.stackoverflow.com/questions/236123/o-que-%C3%A9-e-como-implementar-um-listener-em-java
@@ -32,11 +32,11 @@ public class Campo {
 		this.aberto = aberto;
 	}
 
-	public boolean isContemNavio() {
+	public int getContemNavio() {
 		return contemNavio;
 	}
 
-	public void setContemNavio(boolean contemNavio) {
+	public void setContemNavio(int contemNavio) {
 		this.contemNavio = contemNavio;
 	}
 
@@ -44,8 +44,8 @@ public class Campo {
 		if (!aberto) {
 			setAberto(true);
 
-			if (contemNavio == true) {
-				contemNavio = false;
+			if (contemNavio != 0 ) {
+				contemNavio = 0;
 				System.out.println("Acertou um navio!");
 				notificarObservadores(true);
 				return 1;

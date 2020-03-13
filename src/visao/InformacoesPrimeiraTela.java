@@ -67,32 +67,9 @@ public class InformacoesPrimeiraTela extends JPanel implements MouseListener {
 		botaoIniciar.setText("Iniciar jogo");
 		botaoIniciar.addMouseListener(this);
 
-		RadioButtonHandler tratador = new RadioButtonHandler();
-		facil.addItemListener(tratador);
-		medio.addItemListener(tratador);
-		dificil.addItemListener(tratador);
-
 		add(titulo, BorderLayout.NORTH);
 		add(opcoes, BorderLayout.CENTER);
 		add(botaoIniciar, BorderLayout.SOUTH);
-
-	}
-
-	private class RadioButtonHandler implements ItemListener {
-
-		@Override
-		public void itemStateChanged(ItemEvent event) {
-			if (facil.isSelected()) {
-
-			}
-			if (medio.isSelected()) {
-
-			}
-			if (dificil.isSelected()) {
-
-			}
-
-		}
 
 	}
 

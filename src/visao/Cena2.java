@@ -23,6 +23,10 @@ public class Cena2 extends JPanel implements ObservadorTabuleiro {
 
 		bombasDisponiveis.setFont(new Font("Tahoma", 1, 20));
 		bombasDisponiveis.setForeground(new Color(255, 102, 144));
+		
+		resultadoDoTiro.setText("CLIQUE!");
+		resultadoDoTiro.setForeground(Color.MAGENTA);
+		bombasDisponiveis.setText("Numero de bombas: " + Integer.toString(tabuleiro.getMisseis()) + "   ");
 
 		add(bombasDisponiveis);
 		add(resultadoDoTiro);
@@ -40,7 +44,7 @@ public class Cena2 extends JPanel implements ObservadorTabuleiro {
 		}
 
 		bombasDisponiveis.setText("Numero de bombas: " + Integer.toString(misseis) + "   ");
-
+		
 	}
 
 }

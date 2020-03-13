@@ -3,18 +3,6 @@ package modelo;
 public class Matriz {
 	private int[][] matriz = new int[10][10];
 
-	public static void main(String[] args) {
-		Matriz t = new Matriz();
-		t.preencheMatriz();
-
-		t.preencheMatrizComBarcos(5);
-		t.preencheMatrizComBarcos(4);
-		t.preencheMatrizComBarcos(2);
-		t.preencheMatrizComBarcos(3);
-
-		t.imprimeMatriz();
-	}
-
 	public void preencheMatrizComBarcos(int numeroDeCasasDoBarco) {
 		int linha = 0;
 		int coluna = 0;

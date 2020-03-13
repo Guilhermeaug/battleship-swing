@@ -14,16 +14,20 @@ public class Tabuleiro implements ObservadorCampo {
 		this.misseis = misseis;
 
 		preencherCampos();
-		preencheMatrizComBarcos(5);
-		preencheMatrizComBarcos(4);
-		preencheMatrizComBarcos(3);
-		preencheMatrizComBarcos(2);
+		//preencheMatrizComBarcos(5);
+		//preencheMatrizComBarcos(4);
+		//preencheMatrizComBarcos(3);
+		//preencheMatrizComBarcos(2);
+		preencheMatrizComBarcos(1);
+		
 	}
 
 	// Observadores
 	// https://pt.stackoverflow.com/questions/236123/o-que-%C3%A9-e-como-implementar-um-listener-em-java
 	private final List<ObservadorTabuleiro> observadores = new ArrayList<>();
-
+	private final List<ObservadorTabuleiroResultado> observadores2 = new ArrayList<>();
+	
+	
 	private void notificarObservadores(boolean statusTiro) {
 		for (ObservadorTabuleiro observador : observadores) {
 			observador.notificarMisseis(this, misseis, statusTiro);
@@ -34,7 +38,25 @@ public class Tabuleiro implements ObservadorCampo {
 		observadores.add(obs);
 	}
 
+	public void notificarObservadoresResultado(boolean resultado) {
+		for(ObservadorTabuleiroResultado observador : observadores2) {
+			observador.notificar(this, resultado);
+		}
+	}
+	
+	public void adicionarObservador(ObservadorTabuleiroResultado obs) {
+		observadores2.add(obs);
+	}
+	
 	// Fim Observadores
+	
+	public int getMisseis() {
+		return misseis;
+	}
+
+	public void setMisseis(int misseis) {
+		this.misseis = misseis;
+	}
 
 	private void preencherCampos() {
 		for (int i = 0; i < 10; i++) {
@@ -47,33 +69,37 @@ public class Tabuleiro implements ObservadorCampo {
 	}
 
 	public void preencheMatrizComBarcos(int numeroDeCasasDoBarco) {
-
-		int linha = (int) Math.round(Math.random() * 9);
-		int coluna = (int) Math.round(Math.random() * 9);
+		int linha = 0;
+		int coluna = 0;
+		System.out.println(numeroDeCasasDoBarco);
+		do {
+			linha = (int) Math.round(Math.random() * 9);
+			coluna = (int) Math.round(Math.random() * 9);
+			System.out.println("Linha " + linha + " Coluna " + coluna);
+		} while (matriz[linha][coluna].getContemNavio() != 0);
 
 		int contadorDireita = 0, contadorEsquerda = 0, contadorCima = 0, contadorBaixo = 0;
 		boolean direitaLivre = false, esquerdaLivre = false, paraCimaLivre = false, paraBaixoLivre = false;
 
-		for (int i = linha; i <= (linha + numeroDeCasasDoBarco - 1) && i >= 0 && i < 10; i++) {
-			if ((0 <= i && i < 10) && matriz[i][coluna].isContemNavio() == false) {
+		for (int i = coluna; i <= (coluna + numeroDeCasasDoBarco - 1) && i >= 0 && i < 10; i++) {
+			if ((0 <= i && i < 10) && matriz[linha][i].getContemNavio() == 0) {
 				direitaLivre = true;
 				contadorDireita++;
-			} else if (matriz[i][coluna].isContemNavio() != false) {
+			} else if (matriz[linha][i].getContemNavio() != 0 || matriz[linha][i].getContemNavio() == 1) {
 				contadorDireita++;
 				direitaLivre = false;
 				break;
 			}
 		}
-
 		if (contadorDireita != numeroDeCasasDoBarco) {
 			direitaLivre = false;
 		}
 
-		for (int i = linha; i >= (linha - numeroDeCasasDoBarco + 1) && i >= 0 && i < 10; i--) {
-			if (0 <= i && i < 10 && matriz[i][coluna].isContemNavio() == false) {
+		for (int i = coluna; i >= (coluna - numeroDeCasasDoBarco + 1) && i >= 0 && i < 10; i--) {
+			if (0 <= i && i < 10 && matriz[linha][i].getContemNavio() == 0) {
 				contadorEsquerda++;
 				esquerdaLivre = true;
-			} else if (matriz[i][coluna].isContemNavio() != false) {
+			} else {
 				contadorEsquerda++;
 				esquerdaLivre = false;
 				break;
@@ -83,11 +109,11 @@ public class Tabuleiro implements ObservadorCampo {
 			esquerdaLivre = false;
 		}
 
-		for (int i = coluna; i <= (coluna + numeroDeCasasDoBarco - 1) && i >= 0 && i < 10; i++) {
-			if (0 <= i && i < 10 && matriz[linha][i].isContemNavio() == false) {
+		for (int i = linha; i <= (linha + numeroDeCasasDoBarco - 1) && i >= 0 && i < 10; i++) {
+			if (0 <= i && i < 10 && matriz[i][coluna].getContemNavio() == 0) {
 				contadorBaixo++;
 				paraBaixoLivre = true;
-			} else if (matriz[linha][i].isContemNavio() != false) {
+			} else {
 				contadorBaixo++;
 				paraBaixoLivre = false;
 				break;
@@ -97,11 +123,11 @@ public class Tabuleiro implements ObservadorCampo {
 			paraBaixoLivre = false;
 		}
 
-		for (int i = coluna; i >= (coluna - numeroDeCasasDoBarco + 1) && i >= 0 && i < 10; i--) {
-			if (0 <= i && i < 10 && matriz[linha][i].isContemNavio() == false) {
+		for (int i = linha; i >= (linha - numeroDeCasasDoBarco + 1) && i >= 0 && i < 10; i--) {
+			if (0 <= i && i < 10 && matriz[i][coluna].getContemNavio() == 0) {
 				contadorCima++;
 				paraCimaLivre = true;
-			} else if (matriz[linha][i].isContemNavio() != false) {
+			} else {
 				contadorCima++;
 				paraCimaLivre = false;
 				break;
@@ -111,28 +137,28 @@ public class Tabuleiro implements ObservadorCampo {
 			paraCimaLivre = false;
 		}
 
-		if (direitaLivre == true) {
-			for (int i = linha; i <= (linha + numeroDeCasasDoBarco - 1) && i >= 0 && i < 10; i++) {
+		if (direitaLivre) {
+			for (int i = coluna; i <= (coluna + numeroDeCasasDoBarco - 1) && i >= 0 && i < 10; i++) {
 				if ((i < 10 && i >= 0) && (coluna >= 0 && coluna < 10)) {
-					matriz[coluna][i].setContemNavio(true);
+					matriz[linha][i].setContemNavio(numeroDeCasasDoBarco);
 				}
 			}
 		} else if (esquerdaLivre) {
-			for (int i = linha; i >= (linha - numeroDeCasasDoBarco + 1); i--) {
+			for (int i = coluna; i >= (coluna - numeroDeCasasDoBarco + 1); i--) {
 				if ((i < 10 && i >= 0) && (coluna >= 0 && coluna < 10)) {
-					matriz[coluna][i].setContemNavio(true);
+					matriz[linha][i].setContemNavio(numeroDeCasasDoBarco);
 				}
 			}
 		} else if (paraCimaLivre) {
-			for (int i = coluna; i >= (coluna - numeroDeCasasDoBarco + 1) && i >= 0 && i < 10; i--) {
+			for (int i = linha; i >= (linha - numeroDeCasasDoBarco + 1) && i >= 0 && i < 10; i--) {
 				if ((i < 10 && i >= 0) && (coluna >= 0 && coluna < 10)) {
-					matriz[coluna][i].setContemNavio(true);
+					matriz[i][coluna].setContemNavio(numeroDeCasasDoBarco);
 				}
 			}
 		} else if (paraBaixoLivre) {
-			for (int i = coluna; i <= (coluna + numeroDeCasasDoBarco - 1) && i >= 0 && i < 10; i++) {
+			for (int i = linha; i <= (linha + numeroDeCasasDoBarco - 1) && i >= 0 && i < 10; i++) {
 				if ((i < 10 && i >= 0) && (coluna >= 0 && coluna < 10)) {
-					matriz[coluna][i].setContemNavio(true);
+					matriz[i][coluna].setContemNavio(numeroDeCasasDoBarco);
 				}
 			}
 		} else {
@@ -148,24 +174,24 @@ public class Tabuleiro implements ObservadorCampo {
 
 		notificarObservadores(resultadoDoTiro);
 
-		int teste = verificaSeGanhou();
-
-		if (teste == 1) {
-			JOptionPane.showMessageDialog(null, "Você ganhou");
+		if (verificaSeGanhou()) {
+			notificarObservadoresResultado(true);
+		} else if(misseis == 0) {
+			notificarObservadoresResultado(false);
 		}
 
 	}
 
-	public int verificaSeGanhou() {
+	public boolean verificaSeGanhou() {
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 10; j++) {
-				if (matriz[i][j].isContemNavio()) {
-					return 0;
+				if (matriz[i][j].getContemNavio() != 0) {
+					return false;
 				}
 			}
 		}
 
-		return 1;
+		return true;
 	}
 
 }
