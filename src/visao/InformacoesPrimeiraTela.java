@@ -52,9 +52,9 @@ public class InformacoesPrimeiraTela extends JPanel implements MouseListener {
 		titulo.add(dificuldadeDoJogo, BorderLayout.NORTH);
 
 		JPanel opcoes = new JPanel();
-		facil = new JRadioButton("FÃ¡cil", false);
-		medio = new JRadioButton("MÃ©dio", false);
-		dificil = new JRadioButton("DifÃ­cil", false);
+		facil = new JRadioButton("Fácil", false);
+		medio = new JRadioButton("Médio", false);
+		dificil = new JRadioButton("Difícil", false);
 		botoes.add(facil);
 		botoes.add(medio);
 		botoes.add(dificil);
