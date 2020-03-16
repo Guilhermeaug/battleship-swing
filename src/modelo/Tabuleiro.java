@@ -3,8 +3,6 @@ package modelo;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JOptionPane;
-
 public class Tabuleiro implements ObservadorCampo {
 	private int misseis;
 
@@ -14,11 +12,10 @@ public class Tabuleiro implements ObservadorCampo {
 		this.misseis = misseis;
 
 		preencherCampos();
-		//preencheMatrizComBarcos(5);
-		//preencheMatrizComBarcos(4);
-		//preencheMatrizComBarcos(3);
-		//preencheMatrizComBarcos(2);
-		preencheMatrizComBarcos(1);
+		preencheMatrizComBarcos(5);
+		preencheMatrizComBarcos(4);
+		preencheMatrizComBarcos(3);
+		preencheMatrizComBarcos(2);
 		
 	}
 
@@ -190,7 +187,6 @@ public class Tabuleiro implements ObservadorCampo {
 				}
 			}
 		}
-
 		return true;
 	}
 

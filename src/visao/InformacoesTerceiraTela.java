@@ -8,13 +8,16 @@ import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+
 @SuppressWarnings("serial")
 public class InformacoesTerceiraTela extends JPanel{
 	
 	JButton botaoReiniciar = new JButton();
 	JButton botaoFechar = new JButton();
-	
-	public InformacoesTerceiraTela() {
+	TerceiraTela tela;
+
+	public InformacoesTerceiraTela(TerceiraTela t){
+		tela = t;
 		botaoReiniciar.setText("REINICIAR");
 		botaoFechar.setText("FECHAR");
 		
@@ -38,11 +41,12 @@ public class InformacoesTerceiraTela extends JPanel{
 	}
 
 	void finalizar() {
-		
+		System.exit(0);
 	}
 
 	void reiniciar(ActionEvent e) {
-		
+		tela.dispose();
+		new PrimeiraTela();
 	}
 
 }

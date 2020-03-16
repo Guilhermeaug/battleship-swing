@@ -1,10 +1,12 @@
 package visao;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JLayer;
 
 @SuppressWarnings("serial")
 public class TerceiraTela extends JFrame {
@@ -12,16 +14,17 @@ public class TerceiraTela extends JFrame {
 
 	public TerceiraTela(boolean resultadoDaPartida) {
 		
-		InformacoesTerceiraTela informacoes = new InformacoesTerceiraTela();
+		setTitle("Fim de Jogo");
+		InformacoesTerceiraTela informacoes = new InformacoesTerceiraTela(this);
 
 		// Adicionando a imagem de fundo
 		if (resultadoDaPartida) {
-			// Em caso de vitória
-			imgLabel.setIcon(new ImageIcon(getClass().getResource("/visao/recursos/background.png")));
+			// Em caso de vitï¿½ria
+			imgLabel.setIcon(new ImageIcon(getClass().getResource("/visao/recursos/background_vitoria.png")));
 			add(imgLabel, BorderLayout.NORTH);
 		} else {
 			// Em caso de derrota
-			imgLabel.setIcon(new ImageIcon(getClass().getResource("/visao/recursos/background.png")));
+			imgLabel.setIcon(new ImageIcon(getClass().getResource("/visao/recursos/background_derrota.png")));
 			add(imgLabel, BorderLayout.NORTH);
 		}
 		
@@ -31,6 +34,5 @@ public class TerceiraTela extends JFrame {
 		setLocationRelativeTo(null);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-
 	}
 }

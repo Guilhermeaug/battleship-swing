@@ -1,7 +1,6 @@
 package visao;
 
 import java.awt.BorderLayout;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -37,6 +36,7 @@ public class PrimeiraTela extends JFrame implements ObservadorTela1 {
 
 	}
 
+	
 	public static void main(String[] args) {
 		new PrimeiraTela();
 	}
