@@ -1,8 +1,6 @@
 package visao;
 
 import java.awt.BorderLayout;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -52,9 +50,9 @@ public class InformacoesPrimeiraTela extends JPanel implements MouseListener {
 		titulo.add(dificuldadeDoJogo, BorderLayout.NORTH);
 
 		JPanel opcoes = new JPanel();
-		facil = new JRadioButton("Fácil", false);
-		medio = new JRadioButton("Médio", false);
-		dificil = new JRadioButton("Difícil", false);
+		facil = new JRadioButton("Fï¿½cil", false);
+		medio = new JRadioButton("Mï¿½dio", false);
+		dificil = new JRadioButton("Difï¿½cil", false);
 		botoes.add(facil);
 		botoes.add(medio);
 		botoes.add(dificil);

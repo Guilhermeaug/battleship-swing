@@ -35,7 +35,6 @@ public class PrimeiraTela extends JFrame implements ObservadorTela1 {
 		dispose();
 
 	}
-
 	
 	public static void main(String[] args) {
 		new PrimeiraTela();
