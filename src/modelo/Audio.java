@@ -11,7 +11,7 @@ import javax.sound.sampled.Clip;
 
 public class Audio{ 
 
-	public void TocarAudio(String diretorioAudio) {
+	public void tocarAudio(String diretorioAudio) {
 		try {
 			File localAudio = new File(diretorioAudio);
 			

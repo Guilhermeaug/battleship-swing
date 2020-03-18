@@ -48,13 +48,13 @@ public class Campo {
 			if (contemNavio != 0 ) {
 				contemNavio = 0;
 				String filepath = "src/Audio/bombaBarco.wav";
-				som.TocarAudio(filepath);
+				som.tocarAudio(filepath);
 				System.out.println("Acertou um navio!");
 				notificarObservadores(true);
 				return 1;
 			} else {
 				String filepath = "src/Audio/bombaAgua.wav";
-				som.TocarAudio(filepath);
+				som.tocarAudio(filepath);
 				System.out.println("Errou o tiro!");
 			}
 

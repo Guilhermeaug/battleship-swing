@@ -1,9 +1,11 @@
-package visao;
+package visao; //Cria um tabuleiro , cria os botoes
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 import modelo.ObservadorTabuleiroResultado;
 import modelo.Tabuleiro;
@@ -13,6 +15,17 @@ public class BatalhaNaval extends JFrame implements ObservadorTabuleiroResultado
 	public BatalhaNaval(int misseis) {
 		Tabuleiro tabuleiro = new Tabuleiro(misseis);
 		tabuleiro.adicionarObservador(this);
+		
+		
+		
+		JLabel imgEixoX = new JLabel();
+		imgEixoX.setIcon(new ImageIcon(getClass().getResource("/visao/recursos/Linha.jpg")));
+		
+		//JLabel imgEixoY = new JLabel();
+		//imgEixoX.setIcon(new ImageIcon(getClass().getResource("/visao/recursos/.png")));
+		
+		add(imgEixoX, BorderLayout.NORTH);
+		//add(imgEixoY, BorderLayout.WEST);
 		
 		Cena cena = new Cena(tabuleiro);
 		cena.setPreferredSize(new Dimension(100, 100));

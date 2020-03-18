@@ -1,4 +1,4 @@
-package visao;
+package visao; //Conteiner dos botoes 
 
 import java.awt.GridLayout;
 
