@@ -46,11 +46,11 @@ public class Campo {
 			setAberto(true);
 
 			if (contemNavio != 0 ) {
-				contemNavio = 0;
 				String filepath = "src/Audio/bombaBarco.wav";
 				som.tocarAudio(filepath);
 				System.out.println("Acertou um navio!");
 				notificarObservadores(true);
+				contemNavio = 0;
 				return 1;
 			} else {
 				String filepath = "src/Audio/bombaAgua.wav";

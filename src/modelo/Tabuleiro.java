@@ -170,6 +170,7 @@ public class Tabuleiro implements ObservadorCampo {
 		misseis--;
 		System.out.println(misseis);
 
+		verificaSeFoiDestruido(campo.getContemNavio(), campo);
 		notificarObservadores(resultadoDoTiro);
 
 		if (verificaSeGanhou()) {
@@ -189,6 +190,20 @@ public class Tabuleiro implements ObservadorCampo {
 			}
 		}
 		return true;
+	}
+	
+	public boolean verificaSeFoiDestruido(int numeroDeCasasDoBarco, Campo campo){
+		campo.setContemNavio(0);
+		for (int i = 0; i < 10; i++) {
+			for (int j = 0; j < 10; j++) {
+				if(matriz[i][j].getContemNavio() == numeroDeCasasDoBarco){
+					System.out.println("Não foi destruído");
+					return(false);
+				}
+			}
+		}
+		System.out.println("Barco destruido");
+		return(true);
 	}
 
 }
