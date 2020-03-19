@@ -39,7 +39,6 @@ public class PrimeiraTela extends JFrame implements ObservadorTela1 {
 		
 		pack();
 		
-		
 	}
 
 	@Override

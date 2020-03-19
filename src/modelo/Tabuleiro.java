@@ -168,7 +168,6 @@ public class Tabuleiro implements ObservadorCampo {
 	public void notificar(Campo campo, boolean resultadoDoTiro) {
 		// campo foi aberto!
 		misseis--;
-		System.out.println(misseis);
 
 		verificaSeFoiDestruido(campo.getContemNavio(), campo);
 		notificarObservadores(resultadoDoTiro);
@@ -197,7 +196,7 @@ public class Tabuleiro implements ObservadorCampo {
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 10; j++) {
 				if(matriz[i][j].getContemNavio() == numeroDeCasasDoBarco){
-					System.out.println("Não foi destruído");
+					System.out.println("Nao foi destruido");
 					return(false);
 				}
 			}
