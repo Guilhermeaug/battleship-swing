@@ -21,7 +21,7 @@ public class Audio{
 				clip.open(audioInput);
 				clip.start();
 			}else {
-				System.out.println("Não foi possível tocar o audio");
+				System.out.println("Nao foi possivel tocar o audio");
 			}
 		} catch (Exception ex){
 			ex.printStackTrace();
