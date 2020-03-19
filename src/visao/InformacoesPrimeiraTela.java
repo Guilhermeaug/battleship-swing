@@ -1,16 +1,13 @@
 package visao;//Check box e dificuldade do jogo
 
 import java.awt.BorderLayout;
-
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
-
 import java.awt.Font;
 import java.awt.GridLayout;
-
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -52,7 +49,7 @@ public class InformacoesPrimeiraTela extends JPanel implements MouseListener {
 		setLayout(new BorderLayout(10, 10));
 		
 		JLabel imgMissel = new JLabel();
-		imgMissel.setIcon(new ImageIcon(getClass().getResource("/visao/recursos/m.png"))); //Imagem do botão do missel 
+		imgMissel.setIcon(new ImageIcon(getClass().getResource("/visao/recursos/m.png"))); //Imagem do botï¿½o do missel 
 		
 		JPanel titulo = new JPanel();
 		titulo.setLayout(new BorderLayout());
@@ -60,9 +57,9 @@ public class InformacoesPrimeiraTela extends JPanel implements MouseListener {
 
 		
 		JPanel opcoes = new JPanel(new GridLayout(3,1));
-		facil = new JRadioButton("Fácil", false);
-		medio = new JRadioButton("Médio", false);
-		dificil = new JRadioButton("Difícil", false);
+		facil = new JRadioButton("Facil", false);
+		medio = new JRadioButton("Medio", false);
+		dificil = new JRadioButton("Dificil", false);
 		botoes.add(facil);
 		botoes.add(medio);
 		botoes.add(dificil);
