@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -18,14 +19,28 @@ public class BatalhaNaval extends JFrame implements ObservadorTabuleiroResultado
 		
 		
 		
-		JLabel imgEixoX = new JLabel();
+		JButton imgEixoX = new JButton();
 		imgEixoX.setIcon(new ImageIcon(getClass().getResource("/visao/recursos/Linha.jpg")));
 		
-		//JLabel imgEixoY = new JLabel();
-		//imgEixoX.setIcon(new ImageIcon(getClass().getResource("/visao/recursos/.png")));
+		imgEixoX.setOpaque(false);
+		imgEixoX.setContentAreaFilled(false);
+		imgEixoX.setBorderPainted(false);
+		
+
+		
+		JButton imgEixoY = new JButton();
+		imgEixoY.setIcon(new ImageIcon(getClass().getResource("/visao/recursos/coluna.jpg")));
+		
+		imgEixoY.setOpaque(false);
+		imgEixoY.setContentAreaFilled(false);
+		imgEixoY.setBorderPainted(false);
+			
+		imgEixoY.setMinimumSize(new Dimension(48, 480));
+		imgEixoY.setPreferredSize(new Dimension(48, 480));
+		imgEixoY.setMaximumSize(new Dimension(48, 480));
 		
 		add(imgEixoX, BorderLayout.NORTH);
-		//add(imgEixoY, BorderLayout.WEST);
+		add(imgEixoY, BorderLayout.WEST);
 		
 		Cena cena = new Cena(tabuleiro);
 		cena.setPreferredSize(new Dimension(100, 100));
@@ -37,7 +52,7 @@ public class BatalhaNaval extends JFrame implements ObservadorTabuleiroResultado
 		
 
 		setTitle("Batalha Naval");
-		setSize(500, 500);
+		setSize(550,630);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setVisible(true);
