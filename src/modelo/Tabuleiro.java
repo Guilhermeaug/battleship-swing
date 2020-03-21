@@ -84,8 +84,10 @@ public class Tabuleiro implements ObservadorCampo {
                 // Aqui já fazemos a verificação se há outros barcos nas redondezas
                 if(linha > 0 && i > 0 && linha < 9 && i < 9){
                     if(matriz[linha+1][i].getContemNavio() == 0 && matriz[linha][i+1].getContemNavio() == 0 && matriz[linha-1][i].getContemNavio() == 0 && matriz[linha][i-1].getContemNavio() == 0){
-                        direitaLivre = true;
-                        contadorDireita++;
+                        if(matriz[linha-1][i-1].getContemNavio() == 0 && matriz[linha-1][i+1].getContemNavio() == 0 && matriz[linha+1][i-1].getContemNavio() == 0 && matriz[linha+1][i+1].getContemNavio() == 0){ 
+                            direitaLivre = true;
+                            contadorDireita++;
+                        }
                     }
                 }else if(linha == 0){
                     if(i == 0){
@@ -126,9 +128,11 @@ public class Tabuleiro implements ObservadorCampo {
             if (matriz[linha][i].getContemNavio() == 0) {
                 // Aqui já fazemos a verificação se há outros barcos nas redondezas
                 if(linha > 0 && i > 0 && linha < 9 && i < 9){
-                    if(matriz[linha+1][i].getContemNavio() == 0 && matriz[linha][i+1].getContemNavio() == 0 && matriz[linha-1][i].getContemNavio() == 0 && matriz[linha][i-1].getContemNavio() == 0){
-                        esquerdaLivre = true;
-                        contadorEsquerda++;
+                    if(matriz[linha+1][i].getContemNavio() == 0 && matriz[linha][i+1].getContemNavio() == 0 && matriz[linha-1][i].getContemNavio() == 0 && matriz[linha][i-1].getContemNavio() == 0){   
+                        if(matriz[linha-1][i-1].getContemNavio() == 0 && matriz[linha-1][i+1].getContemNavio() == 0 && matriz[linha+1][i-1].getContemNavio() == 0 && matriz[linha+1][i+1].getContemNavio() == 0){ 
+                            esquerdaLivre = true;
+                            contadorEsquerda++;
+                        }
                     }
                 }else if(linha == 0){
                     if(i == 0){
@@ -170,8 +174,10 @@ public class Tabuleiro implements ObservadorCampo {
                 // Aqui já fazemos a verificação se há outros barcos nas redondezas
                 if(i > 0 && coluna > 0 && i < 9 && coluna < 9){
                     if(matriz[i+1][coluna].getContemNavio() == 0 && matriz[i][coluna+1].getContemNavio() == 0 && matriz[i-1][coluna].getContemNavio() == 0 && matriz[i][coluna-1].getContemNavio() == 0){
-                        contadorBaixo++;
-                        paraBaixoLivre = true;
+                        if(matriz[i-1][coluna-1].getContemNavio() == 0 && matriz[i-1][coluna+1].getContemNavio() == 0 && matriz[i+1][coluna-1].getContemNavio() == 0 && matriz[i+1][coluna+1].getContemNavio() == 0){
+                            contadorBaixo++;
+                            paraBaixoLivre = true;
+                        }
                     }
                 }else if(i == 0){
                     if(coluna == 0){
@@ -213,8 +219,10 @@ public class Tabuleiro implements ObservadorCampo {
             if (matriz[i][coluna].getContemNavio() == 0) {
                 if(i > 0 && coluna > 0 && i < 9 && coluna < 9){
                     if(matriz[i+1][coluna].getContemNavio() == 0 && matriz[i][coluna+1].getContemNavio() == 0 && matriz[i-1][coluna].getContemNavio() == 0 && matriz[i][coluna-1].getContemNavio() == 0){
-                        contadorCima++;
-                        paraCimaLivre = true;
+                        if(matriz[i-1][coluna-1].getContemNavio() == 0 && matriz[i-1][coluna+1].getContemNavio() == 0 && matriz[i+1][coluna-1].getContemNavio() == 0 && matriz[i+1][coluna+1].getContemNavio() == 0){
+                            contadorCima++;
+                            paraCimaLivre = true;
+                        }
                     }
                 }else if(i == 0){
                     if(coluna == 0){
