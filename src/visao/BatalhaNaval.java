@@ -6,7 +6,6 @@ import java.awt.Dimension;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 
 import modelo.ObservadorTabuleiroResultado;
 import modelo.Tabuleiro;
@@ -61,7 +60,7 @@ public class BatalhaNaval extends JFrame implements ObservadorTabuleiroResultado
 
 	@Override
 	public void notificar(Tabuleiro tabuleiro, boolean resultado) {
-		//O jogador ganhou ou perdeu. Fim da história.
+		//O jogador ganhou ou perdeu. Fim da histï¿½ria.
 		dispose();
 		System.out.println("Cheguei aqui!");
 		
