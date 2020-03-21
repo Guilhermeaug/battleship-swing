@@ -1,13 +1,11 @@
 package visao;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
+import modelo.Audio;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-
-import modelo.Audio;
+import java.awt.*;
 
 @SuppressWarnings("serial")
 public class PrimeiraTela extends JFrame implements ObservadorTela1 {

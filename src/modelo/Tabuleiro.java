@@ -51,11 +51,7 @@ public class Tabuleiro implements ObservadorCampo {
 		return misseis;
 	}
 
-	public void setMisseis(int misseis) {
-		this.misseis = misseis;
-	}
-
-	private void preencherCampos() {
+    private void preencherCampos() {
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 10; j++) {
 				Campo campo = new Campo();

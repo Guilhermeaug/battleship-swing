@@ -1,13 +1,10 @@
 package visao;//Texto la de baixo
 
-import java.awt.Color;
-import java.awt.Font;
-
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
 import modelo.ObservadorTabuleiro;
 import modelo.Tabuleiro;
+
+import javax.swing.*;
+import java.awt.*;
 
 @SuppressWarnings("serial")
 public class Cena2 extends JPanel implements ObservadorTabuleiro {
@@ -19,14 +16,14 @@ public class Cena2 extends JPanel implements ObservadorTabuleiro {
 
 		tabuleiro.adicionarObservador(this);
 
-		resultadoDoTiro.setFont(new Font("Tahoma", 1, 20));
+		resultadoDoTiro.setFont(new Font("Tahoma", Font.BOLD, 20));
 
-		bombasDisponiveis.setFont(new Font("Tahoma", 1, 20));
+		bombasDisponiveis.setFont(new Font("Tahoma", Font.BOLD, 20));
 		bombasDisponiveis.setForeground(new Color(255, 102, 144));
 		
 		resultadoDoTiro.setText("CLIQUE!");
 		resultadoDoTiro.setForeground(Color.MAGENTA);
-		bombasDisponiveis.setText("Numero de bombas: " + Integer.toString(tabuleiro.getMisseis()) + "   ");
+		bombasDisponiveis.setText("Numero de bombas: " + tabuleiro.getMisseis() + "   ");
 
 		add(bombasDisponiveis);
 		add(resultadoDoTiro);
@@ -43,7 +40,7 @@ public class Cena2 extends JPanel implements ObservadorTabuleiro {
 			resultadoDoTiro.setForeground(Color.red);
 		}
 
-		bombasDisponiveis.setText("Numero de bombas: " + Integer.toString(misseis) + "   ");
+		bombasDisponiveis.setText("Numero de bombas: " + misseis + "   ");
 		
 	}
 

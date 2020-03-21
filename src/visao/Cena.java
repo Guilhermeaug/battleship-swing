@@ -1,10 +1,9 @@
 package visao; //Conteiner dos botoes 
 
-import java.awt.GridLayout;
-
-import javax.swing.JPanel;
-
 import modelo.Tabuleiro;
+
+import javax.swing.*;
+import java.awt.*;
 
 @SuppressWarnings("serial")
 public class Cena extends JPanel {

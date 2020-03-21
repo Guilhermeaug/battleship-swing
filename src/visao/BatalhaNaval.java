@@ -1,14 +1,10 @@
 package visao; //Cria um tabuleiro , cria os botoes
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-
 import modelo.ObservadorTabuleiroResultado;
 import modelo.Tabuleiro;
+
+import javax.swing.*;
+import java.awt.*;
 
 @SuppressWarnings("serial")
 public class BatalhaNaval extends JFrame implements ObservadorTabuleiroResultado {

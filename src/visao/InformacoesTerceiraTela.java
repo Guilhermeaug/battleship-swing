@@ -1,10 +1,6 @@
-package visao;//Opção de reiniciar 
+package visao;//Opï¿½ï¿½o de reiniciar 
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 
 @SuppressWarnings("serial")
@@ -19,19 +15,9 @@ public class InformacoesTerceiraTela extends JPanel{
 		botaoReiniciar.setText("REINICIAR");
 		botaoFechar.setText("FECHAR");
 		
-		botaoReiniciar.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				reiniciar(e);
-			}
-		});
+		botaoReiniciar.addActionListener(e -> reiniciar());
 		
-		botaoFechar.addActionListener(new ActionListener() {	
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				finalizar();
-			}
-		});
+		botaoFechar.addActionListener(e -> finalizar());
 		
 		add(botaoReiniciar);
 		add(botaoFechar);
@@ -42,7 +28,7 @@ public class InformacoesTerceiraTela extends JPanel{
 		System.exit(0);
 	}
 
-	void reiniciar(ActionEvent e) {
+	void reiniciar() {
 		tela.dispose();
 		new PrimeiraTela();
 	}
