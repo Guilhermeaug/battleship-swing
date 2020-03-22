@@ -1,23 +1,28 @@
-package visao;
+package visao.tela1;
 
-import modelo.Audio;
+import java.awt.BorderLayout;
+import java.awt.Color;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import java.awt.*;
+
+import estrutura.Audio;
 
 @SuppressWarnings("serial")
-public class PrimeiraTela extends JFrame implements ObservadorTela1 {
+public class PrimeiraTela extends JFrame {
 	JLabel imgLabel = new JLabel();
 
 	public PrimeiraTela() {
-		
+
+		// Som de fundo que toca durante o jogo
 		Audio song = new Audio();
 		song.tocarAudio("src/Audio/MissaoImpossivel.wav");
-		
-		InformacoesPrimeiraTela informacoes = new InformacoesPrimeiraTela();
-		informacoes.adicionarObservador(this);
+
+		// JLabel com as opcoes
+		InformacoesPrimeiraTela informacoes = new InformacoesPrimeiraTela(this);
+
+		Color minhaCor = new Color(255, 255, 255);
 
 		// Adicionando a imagem de fundo
 		imgLabel.setIcon(new ImageIcon(getClass().getResource("/visao/recursos/background.png")));
@@ -31,21 +36,11 @@ public class PrimeiraTela extends JFrame implements ObservadorTela1 {
 		setLocationRelativeTo(null);
 		setVisible(true);
 		setResizable(false);
-		
-		Color minhaCor = new Color(255, 255, 255);
 		setBackground(minhaCor);
-		
 		pack();
-		
-	}
-
-	@Override
-	public void notificar(InformacoesPrimeiraTela tela1) {
-		// A dificuldade foi selecionada! Hora de seguir adiante.
-		dispose();
 
 	}
-	
+
 	public static void main(String[] args) {
 		new PrimeiraTela();
 	}

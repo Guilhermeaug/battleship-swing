@@ -1,24 +1,24 @@
-package visao; //captura os eventos de click 
+package visao.tela2; //captura os eventos de click 
 
-import modelo.Campo;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+
+import estrutura.Campo;
 
 @SuppressWarnings("serial")
 public class Botao extends JButton implements MouseListener {
 	private Campo campo;
-	public Botao(Campo campo) {
-		
-		 
+
+	public Botao(Campo campo) { // Cada botao recebe um objeto campo
+
 		this.campo = campo;
-		addMouseListener(this);
-		
-		
+		addMouseListener(this); // Captura evento clique
+
 		setIcon(new ImageIcon(getClass().getResource("/visao/recursos/mar.png")));
-		
 		setBackground(new Color(47, 86, 215));
 
 	}
@@ -26,17 +26,18 @@ public class Botao extends JButton implements MouseListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		if (e.getButton() == 1) {
-			int resultado = campo.abrirCampo();
-			if (resultado == 1) {
+			boolean resultado = campo.abrirCampo(); // Abre o campo clicado
+			if (resultado == true) { // Se acertou um barco
 				setIcon(new ImageIcon(getClass().getResource("/visao/recursos/boom.gif")));
-			} else if (resultado == 0) {
+			} else if (resultado == false) { // Se acertou o mar
 				setIcon(new ImageIcon(getClass().getResource("/visao/recursos/erro.png")));
 			}
-			
+
+			removeMouseListener(this); // Tira o evento de clique deste botao
+
 		}
 	}
 
-	
 	public void mouseClicked(MouseEvent e) {
 	}
 

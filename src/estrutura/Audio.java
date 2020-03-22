@@ -1,4 +1,4 @@
-package modelo;
+package estrutura;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;

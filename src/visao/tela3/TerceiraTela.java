@@ -1,6 +1,7 @@
-package visao;
+package visao.tela3;
 
 import javax.swing.*;
+
 import java.awt.*;
 
 @SuppressWarnings("serial")
@@ -25,6 +26,7 @@ public class TerceiraTela extends JFrame {
 		add(informacoes, BorderLayout.SOUTH);
 		
 		pack();
+		setResizable(false);
 		setLocationRelativeTo(null);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);

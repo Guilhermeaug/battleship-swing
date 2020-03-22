@@ -1,6 +1,8 @@
-package visao;//Op��o de reiniciar 
+package visao.tela3;//Op��o de reiniciar 
 
 import javax.swing.*;
+
+import visao.tela1.PrimeiraTela;
 
 
 @SuppressWarnings("serial")
