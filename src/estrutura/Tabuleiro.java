@@ -22,31 +22,31 @@ public class Tabuleiro implements ObservadorCampo {
 
 	// Observadores
 	// https://pt.stackoverflow.com/questions/236123/o-que-%C3%A9-e-como-implementar-um-listener-em-java
-	private final List<ObservadorTabuleiro> observadores = new ArrayList<>(); // Responsavel por repassar os resultados
+	private final List<ObservadorTabuleiro> observadoresAcao = new ArrayList<>(); // Responsavel por repassar os resultados
 																				// do disparo e a quantidade de misseis
 																				// para um JPanel
-	private final List<ObservadorTabuleiroResultado> observadores2 = new ArrayList<>(); // Usado para notificar o
+	private final List<ObservadorTabuleiroResultado> observadoresResultado = new ArrayList<>(); // Usado para notificar o
 																						// resultado da partida para o
 																						// JFrame do jogo
 
 	private void notificarObservadores(boolean statusTiro, boolean destruido) {
-		for (ObservadorTabuleiro observador : observadores) {
+		for (ObservadorTabuleiro observador : observadoresAcao) {
 			observador.notificarMisseis(this, misseis, statusTiro, destruido);
 		}
 	}
 
 	public void adicionarObservador(ObservadorTabuleiro obs) {
-		observadores.add(obs);
+		observadoresAcao.add(obs);
 	}
 
 	public void notificarObservadoresResultado(boolean resultado) {
-		for (ObservadorTabuleiroResultado observador : observadores2) {
+		for (ObservadorTabuleiroResultado observador : observadoresResultado) {
 			observador.notificar(this, resultado);
 		}
 	}
 
 	public void adicionarObservador(ObservadorTabuleiroResultado obs) {
-		observadores2.add(obs);
+		observadoresResultado.add(obs);
 	}
 
 	// Fim Observadores
