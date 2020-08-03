@@ -7,27 +7,8 @@ public class Campo {
 
 	private boolean aberto = false;
 	private int contemNavio = 0;
-	// Classe Audio para tocar som
-	Audio som = new Audio();
-
-	// Observadores
-	// https://pt.stackoverflow.com/questions/236123/o-que-%C3%A9-e-como-implementar-um-listener-em-java
-	// Esses observadores servem para repassar para o objeto Tabuleiro o resultado
-	// da abertura do campo
-	private final List<ObservadorCampo> observadores = new ArrayList<>();
-
-	private void notificarObservadores(boolean resultado) {
-		for (ObservadorCampo observador : observadores) {
-			observador.notificar(this, resultado);
-		}
-	}
-
-	public void adicionarObservador(ObservadorCampo obs) {
-		observadores.add(obs);
-	}
-
-	// Fim Observadores
-
+	Audio som = new Audio(); // Classe Audio para tocar som
+	
 	public void setAberto(boolean aberto) {
 		this.aberto = aberto;
 	}
@@ -39,6 +20,21 @@ public class Campo {
 	public void setContemNavio(int contemNavio) {
 		this.contemNavio = contemNavio;
 	}
+
+	// Observadores
+	// https://pt.stackoverflow.com/questions/236123/o-que-%C3%A9-e-como-implementar-um-listener-em-java
+	private final List<ObservadorCampo> observadorCampos = new ArrayList<>();
+
+	private void notificarObservadores(boolean resultado) {
+		for (ObservadorCampo observador : observadorCampos) {
+			observador.notificarTabuleiro(this, resultado);
+		}
+	}
+
+	public void adicionarObservador(ObservadorCampo obs) {
+		observadorCampos.add(obs);
+	}
+	// Fim Observadores
 
 	// Função acionada apos o clique do usuario que retorna o acerto ou erro
 	public boolean abrirCampo() {

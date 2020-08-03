@@ -1,7 +1,6 @@
 package visao.tela1;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -22,8 +21,6 @@ public class PrimeiraTela extends JFrame {
 		// JLabel com as opcoes
 		InformacoesPrimeiraTela informacoes = new InformacoesPrimeiraTela(this);
 
-		Color minhaCor = new Color(255, 255, 255);
-
 		// Adicionando a imagem de fundo
 		imgLabel.setIcon(new ImageIcon(getClass().getResource("/visao/recursos/background.png")));
 		add(imgLabel, BorderLayout.NORTH);
@@ -36,9 +33,7 @@ public class PrimeiraTela extends JFrame {
 		setLocationRelativeTo(null);
 		setVisible(true);
 		setResizable(false);
-		setBackground(minhaCor);
 		pack();
-
 	}
 
 	public static void main(String[] args) {

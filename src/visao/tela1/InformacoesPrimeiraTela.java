@@ -39,7 +39,6 @@ public class InformacoesPrimeiraTela extends JPanel implements MouseListener {
 		JLabel imgMissel = new JLabel();
 		imgMissel.setIcon(new ImageIcon(getClass().getResource("/visao/recursos/m.png"))); // Imagem do bot�o do
 																							// missel
-
 		JPanel titulo = new JPanel();
 		titulo.setLayout(new BorderLayout());
 		titulo.add(dificuldadeDoJogo, BorderLayout.NORTH);
@@ -52,10 +51,12 @@ public class InformacoesPrimeiraTela extends JPanel implements MouseListener {
 		botoes.add(medio);
 		botoes.add(dificil);
 
+		//Fonte das letras
 		facil.setFont(new Font("Impact", Font.PLAIN, 15));
 		medio.setFont(new Font("Impact", Font.PLAIN, 15));
 		dificil.setFont(new Font("Impact", Font.PLAIN, 15));
 
+		//Cor das letras
 		facil.setForeground(new Color(0, 255, 0));
 		medio.setForeground(new Color(255, 215, 0));
 		dificil.setForeground(new Color(255, 0, 0));
@@ -92,7 +93,7 @@ public class InformacoesPrimeiraTela extends JPanel implements MouseListener {
 			tela.dispose();
 		}
 	}
-
+	
 	public void mouseClicked(MouseEvent e) {
 	}
 

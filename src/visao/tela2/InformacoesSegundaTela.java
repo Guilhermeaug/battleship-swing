@@ -6,11 +6,11 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import estrutura.ObservadorTabuleiro;
+import estrutura.ObservadorTabuleiroAcao;
 import estrutura.Tabuleiro;
 
 @SuppressWarnings("serial")
-public class InformacoesSegundaTela extends JPanel implements ObservadorTabuleiro {
+public class InformacoesSegundaTela extends JPanel implements ObservadorTabuleiroAcao {
 	JLabel resultadoDoTiro = new JLabel("Resultado: ");
 	JLabel bombasDisponiveis = new JLabel("Numero de bombas: ");
 
@@ -18,7 +18,7 @@ public class InformacoesSegundaTela extends JPanel implements ObservadorTabuleir
 	public InformacoesSegundaTela(Tabuleiro tabuleiro) {
 		// setLayout(new GridLayout(1,0));
 
-		tabuleiro.adicionarObservador(this);
+		tabuleiro.adicionarObservadorAcao(this);
 
 		resultadoDoTiro.setFont(new Font("Tahoma", Font.BOLD, 20));
 
@@ -33,7 +33,8 @@ public class InformacoesSegundaTela extends JPanel implements ObservadorTabuleir
 		add(resultadoDoTiro);
 
 	}
-
+	
+	//Observador tabuleiroAcao
 	@Override
 	public void notificarMisseis(Tabuleiro tabuleiro, int misseis, boolean statusTiro, boolean destruido) {
 		// A cada tiro, a informacao é atualizada

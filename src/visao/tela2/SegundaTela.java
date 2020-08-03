@@ -15,8 +15,9 @@ import visao.tela3.TerceiraTela;
 public class SegundaTela extends JFrame implements ObservadorTabuleiroResultado {
 	public SegundaTela(int misseis) {
 		Tabuleiro tabuleiro = new Tabuleiro(misseis);
-		tabuleiro.adicionarObservador(this); // Esse JFrame é um observador de tabuleiro
-
+		tabuleiro.adicionarObservadorResultado(this); // Esse JFrame é um observador de tabuleiro
+		
+		//Inicio da customização das bordas sinalizadoras
 		JButton imgEixoX = new JButton();
 		imgEixoX.setIcon(new ImageIcon(getClass().getResource("/visao/recursos/Linha.jpg")));
 
@@ -37,6 +38,7 @@ public class SegundaTela extends JFrame implements ObservadorTabuleiroResultado 
 
 		add(imgEixoX, BorderLayout.NORTH);
 		add(imgEixoY, BorderLayout.WEST);
+		//Fim das bordas sinalizadoras
 
 		// Parte em que o usuario interage
 		Jogo cena = new Jogo(tabuleiro);
@@ -55,9 +57,10 @@ public class SegundaTela extends JFrame implements ObservadorTabuleiroResultado 
 		setResizable(false);
 		setVisible(true);
 	}
-
+	
+	//Observador da classe tabuleiroResultado
 	@Override
-	public void notificar(Tabuleiro tabuleiro, boolean resultado) {
+	public void notificarResultado(Tabuleiro tabuleiro, boolean resultado) {
 		// O jogador ganhou ou perdeu. Fim da partida.
 		dispose();
 

@@ -1,5 +1,5 @@
 package estrutura;
 
-public interface ObservadorTabuleiro { // Repassa o resultado dos disparos para a interface gráfica
+public interface ObservadorTabuleiroAcao { // Repassa o resultado dos disparos para a interface gráfica
 	void notificarMisseis(Tabuleiro tabuleiro, int misseis, boolean statusTiro, boolean destruido);
 }

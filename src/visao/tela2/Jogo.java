@@ -8,7 +8,7 @@ import estrutura.Tabuleiro;
 
 @SuppressWarnings("serial")
 public class Jogo extends JPanel {
-
+	//cria os botoes do jogo
 	public Jogo(Tabuleiro tabuleiro) {
 		setLayout(new GridLayout(10, 10));
 		// Um botao para cada campo

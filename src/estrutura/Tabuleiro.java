@@ -5,13 +5,11 @@ import java.util.List;
 
 public class Tabuleiro implements ObservadorCampo {
 	private int misseis; // Quantidade de bombas a disposição
-
 	public Campo[][] matriz = new Campo[10][10]; // Matriz 10x10 de campos
 
 	public Tabuleiro(int misseis) {
-		this.misseis = misseis; // A Quantidade de bombas é passada via parâmetro quando o tabuleiro é
-								// construido
-
+		this.misseis = misseis; // A Quantidade de bombas é passada via parâmetro quando o tabuleiro é construido
+								
 		preencherCampos();
 		preencheMatrizComBarcos(5);
 		preencheMatrizComBarcos(4);
@@ -19,41 +17,38 @@ public class Tabuleiro implements ObservadorCampo {
 		preencheMatrizComBarcos(2);
 
 	}
+	
+	public int getMisseis() {
+		return misseis;
+	}
 
 	// Observadores
-	// https://pt.stackoverflow.com/questions/236123/o-que-%C3%A9-e-como-implementar-um-listener-em-java
-	private final List<ObservadorTabuleiro> observadoresAcao = new ArrayList<>(); // Responsavel por repassar os resultados
-																				// do disparo e a quantidade de misseis
-																				// para um JPanel
-	private final List<ObservadorTabuleiroResultado> observadoresResultado = new ArrayList<>(); // Usado para notificar o
-																						// resultado da partida para o
-																						// JFrame do jogo
-
-	private void notificarObservadores(boolean statusTiro, boolean destruido) {
-		for (ObservadorTabuleiro observador : observadoresAcao) {
+	// Responsavel por repassar os resultados do disparo e a quantidade de misseis para o JPanel
+	private final List<ObservadorTabuleiroAcao> observadoresAcao = new ArrayList<>(); 
+	// Usado para notificar o resultado da partida para o JFrame do jogo
+	private final List<ObservadorTabuleiroResultado> observadorTabuleiroResultados = new ArrayList<>(); 
+	
+	private void notificarObservadoresAcao(boolean statusTiro, boolean destruido) {
+		for (ObservadorTabuleiroAcao observador : observadoresAcao) {
 			observador.notificarMisseis(this, misseis, statusTiro, destruido);
 		}
 	}
 
-	public void adicionarObservador(ObservadorTabuleiro obs) {
+	public void adicionarObservadorAcao(ObservadorTabuleiroAcao obs) {
 		observadoresAcao.add(obs);
 	}
 
 	public void notificarObservadoresResultado(boolean resultado) {
-		for (ObservadorTabuleiroResultado observador : observadoresResultado) {
-			observador.notificar(this, resultado);
+		for (ObservadorTabuleiroResultado observador : observadorTabuleiroResultados) {
+			observador.notificarResultado(this, resultado);
 		}
 	}
 
-	public void adicionarObservador(ObservadorTabuleiroResultado obs) {
-		observadoresResultado.add(obs);
+	public void adicionarObservadorResultado(ObservadorTabuleiroResultado obs) {
+		observadorTabuleiroResultados.add(obs);
 	}
 
 	// Fim Observadores
-
-	public int getMisseis() {
-		return misseis;
-	}
 
 	// Preenche os campos da matriz e adiciona o tabuleiro como seus observadores
 	private void preencherCampos() {
@@ -312,15 +307,16 @@ public class Tabuleiro implements ObservadorCampo {
 			this.preencheMatrizComBarcos(numeroDeCasasDoBarco);
 		}
 	}
-
+	
+	
+	//Função implementada da classe Campo
 	@Override
-	public void notificar(Campo campo, boolean resultadoDoTiro) {
+	public void notificarTabuleiro(Campo campo, boolean resultadoDoTiro) {
 		// campo foi aberto!
 		misseis--; // Menos um disparo
-
 		boolean destruido = verificaSeFoiDestruido(campo.getContemNavio(), campo); // Verifica se o navio foi
 																					// completamente destruido
-		notificarObservadores(resultadoDoTiro, destruido); // Notifica o JPanel informacoesTela1 se o disparo foi
+		notificarObservadoresAcao(resultadoDoTiro, destruido); // Notifica o JPanel informacoesTela1 se o disparo foi
 															// efetivo ou não.
 
 		// Verifica se o usuario ganhou ou perdeu e notifica a tela principal do jogo
