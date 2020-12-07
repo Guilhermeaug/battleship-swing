@@ -9,8 +9,8 @@ import visao.tela3.TerceiraTela;
 public class Tabuleiro implements ObservadorCampo {
 	private int misseis; // Quantidade de bombas a disposição
 	public Campo[][] matriz = new Campo[10][10]; // Matriz 10x10 de campos
-	SegundaTela jogoRodando;
-
+	SegundaTela jogoRodando; //instância da tela do jogo que virá de parâmetro na criação do tabuleiro
+	
 	public Tabuleiro(int misseis, SegundaTela segundaTela) {
 		this.misseis = misseis; // A Quantidade de bombas é passada via parâmetro quando o tabuleiro é construido
 								
@@ -313,10 +313,10 @@ public class Tabuleiro implements ObservadorCampo {
 		notificarObservadoresAcao(resultadoDoTiro, destruido); // Notifica o JPanel informacoesTela1 se o disparo foi
 															// efetivo ou não.
 
-		// Verifica se o usuario ganhou ou perdeu e notifica a tela principal do jogo
+		// Verifica se o usuario ganhou ou perdeu e inicia a ultima tela do jogo
 		if (verificaSeGanhou()) {
-			jogoRodando.dispose();
-			new TerceiraTela(true);
+			jogoRodando.dispose(); //a tela principal do jogo é fechada
+			new TerceiraTela(true); //a tela final aparece
 		} else if (misseis == 0) {
 			jogoRodando.dispose();
 			new TerceiraTela(false);

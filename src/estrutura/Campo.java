@@ -10,7 +10,7 @@ public class Campo {
 	Audio som = new Audio(); // Classe Audio para tocar som
 
 	// https://pt.stackoverflow.com/questions/236123/o-que-%C3%A9-e-como-implementar-um-listener-em-java
-	private final List<ObservadorCampo> observadorCampos = new ArrayList<>();
+	private final List<ObservadorCampo> observadorCampos = new ArrayList<>(); //repassa informações do campo atual para o tabuleiro
 
 	public int getContemNavio() {
 		return contemNavio;
