@@ -36,7 +36,7 @@ public class InformacoesSegundaTela extends JPanel implements ObservadorTabuleir
 	
 	//Observador tabuleiroAcao
 	@Override
-	public void notificarMisseis(Tabuleiro tabuleiro, int misseis, boolean statusTiro, boolean destruido) {
+	public void notificarMisseis(Tabuleiro tabuleiro, boolean statusTiro, boolean destruido) {
 		// A cada tiro, a informacao é atualizada
 		if (destruido) {
 			resultadoDoTiro.setText("NAVIO DESTRUIDO!");
@@ -49,7 +49,7 @@ public class InformacoesSegundaTela extends JPanel implements ObservadorTabuleir
 			resultadoDoTiro.setForeground(Color.red);
 		}
 
-		bombasDisponiveis.setText("Numero de bombas: " + misseis + "   ");
+		bombasDisponiveis.setText("Numero de bombas: " + tabuleiro.getMisseis() + "   ");
 
 	}
 

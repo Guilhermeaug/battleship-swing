@@ -3,11 +3,15 @@ package estrutura;
 import java.util.ArrayList;
 import java.util.List;
 
+import visao.tela2.SegundaTela;
+import visao.tela3.TerceiraTela;
+
 public class Tabuleiro implements ObservadorCampo {
 	private int misseis; // Quantidade de bombas a disposição
 	public Campo[][] matriz = new Campo[10][10]; // Matriz 10x10 de campos
+	SegundaTela jogoRodando;
 
-	public Tabuleiro(int misseis) {
+	public Tabuleiro(int misseis, SegundaTela segundaTela) {
 		this.misseis = misseis; // A Quantidade de bombas é passada via parâmetro quando o tabuleiro é construido
 								
 		preencherCampos();
@@ -15,6 +19,8 @@ public class Tabuleiro implements ObservadorCampo {
 		preencheMatrizComBarcos(4);
 		preencheMatrizComBarcos(3);
 		preencheMatrizComBarcos(2);
+		
+		this.jogoRodando = segundaTela;
 
 	}
 	
@@ -25,27 +31,15 @@ public class Tabuleiro implements ObservadorCampo {
 	// Observadores
 	// Responsavel por repassar os resultados do disparo e a quantidade de misseis para o JPanel
 	private final List<ObservadorTabuleiroAcao> observadoresAcao = new ArrayList<>(); 
-	// Usado para notificar o resultado da partida para o JFrame do jogo
-	private final List<ObservadorTabuleiroResultado> observadorTabuleiroResultados = new ArrayList<>(); 
 	
 	private void notificarObservadoresAcao(boolean statusTiro, boolean destruido) {
 		for (ObservadorTabuleiroAcao observador : observadoresAcao) {
-			observador.notificarMisseis(this, misseis, statusTiro, destruido);
+			observador.notificarMisseis(this, statusTiro, destruido);
 		}
 	}
 
 	public void adicionarObservadorAcao(ObservadorTabuleiroAcao obs) {
 		observadoresAcao.add(obs);
-	}
-
-	public void notificarObservadoresResultado(boolean resultado) {
-		for (ObservadorTabuleiroResultado observador : observadorTabuleiroResultados) {
-			observador.notificarResultado(this, resultado);
-		}
-	}
-
-	public void adicionarObservadorResultado(ObservadorTabuleiroResultado obs) {
-		observadorTabuleiroResultados.add(obs);
 	}
 
 	// Fim Observadores
@@ -321,9 +315,11 @@ public class Tabuleiro implements ObservadorCampo {
 
 		// Verifica se o usuario ganhou ou perdeu e notifica a tela principal do jogo
 		if (verificaSeGanhou()) {
-			notificarObservadoresResultado(true);
+			jogoRodando.dispose();
+			new TerceiraTela(true);
 		} else if (misseis == 0) {
-			notificarObservadoresResultado(false);
+			jogoRodando.dispose();
+			new TerceiraTela(false);
 		}
 
 	}
