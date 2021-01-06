@@ -82,7 +82,7 @@ public class InformacoesPrimeiraTela extends JPanel implements MouseListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		if (facil.isSelected()) {
-			new SegundaTela(1);
+			new SegundaTela(80);
 			tela.dispose();
 		} else if (medio.isSelected()) {
 			new SegundaTela(50);

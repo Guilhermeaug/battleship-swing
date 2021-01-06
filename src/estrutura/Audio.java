@@ -6,7 +6,6 @@ import javax.sound.sampled.Clip;
 import java.io.File;
 
 public class Audio{
-	public static int travaAudio = 0;
 
 	public void tocarAudio(String diretorioAudio) {
 		try {
@@ -16,10 +15,6 @@ public class Audio{
 				AudioInputStream audioInput = AudioSystem.getAudioInputStream(localAudio);
 				Clip clip = AudioSystem.getClip();
 				clip.open(audioInput);
-				if(diretorioAudio.equals("src/Audio/MissaoImpossivel.wav")){
-					clip.loop(Clip.LOOP_CONTINUOUSLY);
-					Audio.travaAudio = 1;
-				}
 				clip.start();
 
 			}else {
