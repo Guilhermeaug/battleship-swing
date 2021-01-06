@@ -8,7 +8,6 @@ import javax.swing.JLabel;
 
 import estrutura.Audio;
 
-@SuppressWarnings("serial")
 public class PrimeiraTela extends JFrame {
 	JLabel imgLabel = new JLabel();
 
@@ -16,7 +15,7 @@ public class PrimeiraTela extends JFrame {
 
 		// Som de fundo que toca durante o jogo
 		Audio song = new Audio();
-		song.tocarAudio("src/Audio/MissaoImpossivel.wav");
+		if(Audio.travaAudio == 0){ song.tocarAudio("src/Audio/MissaoImpossivel.wav"); }
 
 		// JLabel com as opcoes
 		InformacoesPrimeiraTela informacoes = new InformacoesPrimeiraTela(this);

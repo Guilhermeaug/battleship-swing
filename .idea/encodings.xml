@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/estrutura/ObservadorTabuleiroAcao.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/estrutura/Tabuleiro.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/visao/tela2/InformacoesSegundaTela.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/visao/tela2/SegundaTela.java" charset="windows-1252" />
+  </component>
+</project>

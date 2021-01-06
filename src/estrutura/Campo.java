@@ -5,23 +5,13 @@ import java.util.List;
 
 public class Campo {
 
-	// private boolean aberto = false;
 	private int contemNavio = 0;
 	Audio som = new Audio(); // Classe Audio para tocar som
-
 	// https://pt.stackoverflow.com/questions/236123/o-que-%C3%A9-e-como-implementar-um-listener-em-java
-	private final List<ObservadorCampo> observadorCampos = new ArrayList<>(); //repassa informações do campo atual para o tabuleiro
-
-	public int getContemNavio() {
-		return contemNavio;
-	}
-
-	public void setContemNavio(int contemNavio) {
-		this.contemNavio = contemNavio;
-	}
+	private final List<ObservadorCampo> observadorCampos = new ArrayList<>(); //repassa informaï¿½ï¿½es do campo atual para o tabuleiro
 
 	// Observadores
-	private void notificarObservadores(boolean resultadoDoTiro) {
+	private void notificarObservadores(boolean resultadoDoTiro) { //funÃ§Ã£o criada para percorrer os observadores e repassar os dados
 		for (ObservadorCampo observador : observadorCampos) {
 			observador.notificarTabuleiro(this, resultadoDoTiro);
 		}
@@ -32,22 +22,29 @@ public class Campo {
 	}
 	// Fim Observadores
 
-	// Função acionada apos o clique do usuario que retorna o acerto ou erro
+	// Funï¿½ï¿½o acionada apos o clique do usuario que retorna o acerto ou erro
 	public boolean abrirCampo() {
 
 		if (contemNavio != 0) { // Se houver um navio neste ponto
 			String filepath = "src/Audio/bombaBarco.wav"; // Caminho do som de acerto
 			som.tocarAudio(filepath); // Toca o som de acerto
 			notificarObservadores(true); // Notifica o tabuleiro que o tiro foi preciso!
-			contemNavio = 0; // Agora não há mais um navio aqui
+			contemNavio = 0; // Agora nï¿½o hï¿½ mais um navio aqui
 			return true; // Retorna para o JButton que o disparo acertou um navio
-		} else { // Se não houver um navio
+		} else { // Se nï¿½o houver um navio
 			String filepath = "src/Audio/bombaAgua.wav"; // Caminho do som de erro
 			som.tocarAudio(filepath); // Toca o som de erro
-			notificarObservadores(false); // Notifica o tabuleiro que a bomba caiu na água
+			notificarObservadores(false); // Notifica o tabuleiro que a bomba caiu na ï¿½gua
 		}
 
-		return false; // O campo não tinha navio
+		return false; // O campo nï¿½o tinha navio
+	}
+
+	public int getContemNavio() {
+		return contemNavio;
+	}
+	public void setContemNavio(int contemNavio) {
+		this.contemNavio = contemNavio;
 	}
 
 }

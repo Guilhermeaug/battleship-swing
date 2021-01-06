@@ -17,7 +17,6 @@ import javax.swing.SwingConstants;
 
 import visao.tela2.SegundaTela;
 
-@SuppressWarnings("serial")
 public class InformacoesPrimeiraTela extends JPanel implements MouseListener {
 
 	JLabel dificuldadeDoJogo = new JLabel();
@@ -83,7 +82,7 @@ public class InformacoesPrimeiraTela extends JPanel implements MouseListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		if (facil.isSelected()) {
-			new SegundaTela(80);
+			new SegundaTela(1);
 			tela.dispose();
 		} else if (medio.isSelected()) {
 			new SegundaTela(50);

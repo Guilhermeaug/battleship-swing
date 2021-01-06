@@ -9,7 +9,6 @@ import javax.swing.JButton;
 
 import estrutura.Campo;
 
-@SuppressWarnings("serial")
 public class Botao extends JButton implements MouseListener {
 	private Campo campo;
 
@@ -27,9 +26,9 @@ public class Botao extends JButton implements MouseListener {
 	public void mousePressed(MouseEvent e) {
 		if (e.getButton() == 1) {
 			boolean resultado = campo.abrirCampo(); // Abre o campo clicado
-			if (resultado == true) { // Se acertou um barco
+			if (resultado) { // Se acertou um barco
 				setIcon(new ImageIcon(getClass().getResource("/visao/recursos/boom.gif")));
-			} else if (resultado == false) { // Se acertou o mar
+			} else { // Se acertou o mar
 				setIcon(new ImageIcon(getClass().getResource("/visao/recursos/erro.png")));
 			}
 

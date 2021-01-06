@@ -1,38 +1,36 @@
 package visao.tela3;//Op��o de reiniciar 
 
-import javax.swing.*;
-
 import visao.tela1.PrimeiraTela;
 
+import javax.swing.*;
 
-@SuppressWarnings("serial")
-public class InformacoesTerceiraTela extends JPanel{
-	
-	JButton botaoReiniciar = new JButton();
-	JButton botaoFechar = new JButton();
-	TerceiraTela tela;
+public class InformacoesTerceiraTela extends JPanel {
 
-	public InformacoesTerceiraTela(TerceiraTela t){
-		tela = t;
-		botaoReiniciar.setText("REINICIAR");
-		botaoFechar.setText("FECHAR");
-		
-		botaoReiniciar.addActionListener(e -> reiniciar());
-		
-		botaoFechar.addActionListener(e -> finalizar());
-		
-		add(botaoReiniciar);
-		add(botaoFechar);
-		
-	}
+    JButton botaoReiniciar = new JButton();
+    JButton botaoFechar = new JButton();
+    TerceiraTela tela;
 
-	void finalizar() {
-		System.exit(0);
-	}
+    public InformacoesTerceiraTela(TerceiraTela t) {
+        tela = t;
+        botaoReiniciar.setText("REINICIAR");
+        botaoFechar.setText("FECHAR");
 
-	void reiniciar() {
-		tela.dispose();
-		new PrimeiraTela();
-	}
+        botaoReiniciar.addActionListener(e -> reiniciar());
+
+        botaoFechar.addActionListener(e -> finalizar());
+
+        add(botaoReiniciar);
+        add(botaoFechar);
+
+    }
+
+    void finalizar() {
+        System.exit(0);
+    }
+
+    void reiniciar() {
+        tela.dispose();
+        new PrimeiraTela();
+    }
 
 }

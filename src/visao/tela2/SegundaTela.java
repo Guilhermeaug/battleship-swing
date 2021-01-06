@@ -9,7 +9,6 @@ import javax.swing.JFrame;
 
 import estrutura.Tabuleiro;
 
-@SuppressWarnings("serial")
 public class SegundaTela extends JFrame {
 	public SegundaTela(int misseis) {
 		Tabuleiro tabuleiro = new Tabuleiro(misseis, this);

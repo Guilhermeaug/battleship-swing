@@ -4,7 +4,6 @@ import javax.swing.*;
 
 import java.awt.*;
 
-@SuppressWarnings("serial")
 public class TerceiraTela extends JFrame {
 	JLabel imgLabel = new JLabel();
 

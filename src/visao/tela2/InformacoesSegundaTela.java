@@ -9,7 +9,6 @@ import javax.swing.JPanel;
 import estrutura.ObservadorTabuleiroAcao;
 import estrutura.Tabuleiro;
 
-@SuppressWarnings("serial")
 public class InformacoesSegundaTela extends JPanel implements ObservadorTabuleiroAcao {
 	JLabel resultadoDoTiro = new JLabel("Resultado: ");
 	JLabel bombasDisponiveis = new JLabel("Numero de bombas: ");
@@ -18,7 +17,7 @@ public class InformacoesSegundaTela extends JPanel implements ObservadorTabuleir
 	public InformacoesSegundaTela(Tabuleiro tabuleiro) {
 		// setLayout(new GridLayout(1,0));
 
-		tabuleiro.adicionarObservadorAcao(this);
+		tabuleiro.adicionarObservadorAcao(this); //Essa classe observa o tabuleiro para receber suas ações
 
 		resultadoDoTiro.setFont(new Font("Tahoma", Font.BOLD, 20));
 

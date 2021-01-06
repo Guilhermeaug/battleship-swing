@@ -6,7 +6,6 @@ import javax.swing.JPanel;
 
 import estrutura.Tabuleiro;
 
-@SuppressWarnings("serial")
 public class Jogo extends JPanel {
 	//cria os botoes do jogo
 	public Jogo(Tabuleiro tabuleiro) {
